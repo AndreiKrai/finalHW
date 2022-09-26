@@ -16,11 +16,12 @@ inputEl.addEventListener('submit', onSubmit);
 let inputSearch = '';
 
 async function onSubmit(event) {
+  console.log(event.currentTarget.elements);
   event.preventDefault();
   page = 1;
   cleanMarkup();
   changeClassIshidden(loadMoreBtn, true);
-  inputSearch = event.target[0].value;
+  inputSearch = event.currentTarget.elements.searchQuery.value.trim();
   console.log(inputSearch);
   if (!inputSearch) {
     Notiflix.Notify.failure('Enter reqwest');
@@ -112,7 +113,10 @@ function changeClassIshidden(el, value) {
   } else el.classList.remove('is-hidden');
 }
 
-function onClickLoadMoreBtn(event) {
+async function onClickLoadMoreBtn(event) {
   page += 1;
-  buildMarkup(inputSearch);
+  const picturesArray = await getPicture(inputSearch);
+  console.log(picturesArray);
+  createMarkup(picturesArray);
+  console.log(page);
 }
