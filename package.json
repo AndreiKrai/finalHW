@@ -5,7 +5,7 @@
   "homepage": "https://github.com/AndreiKrai/finalHW",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url / finalHW/"
+    "build": "parcel build src/*.html --public-url /finalHW/"
   },
   "repository": {
     "type": "git",
